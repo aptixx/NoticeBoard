@@ -46,6 +46,6 @@ class UserProfile(models.Model):
     def send_registration_confirmation_email(self):
         subject = 'Registration Confirmation Code'
         message = f'Your confirmation code is: {self.confirmation_code}'
-        from_email = 'noreply@example.com'
+        from_email = 'test@test.com'
         recipient_list = [self.user.email]
         send_mail(subject, message, from_email, recipient_list)
