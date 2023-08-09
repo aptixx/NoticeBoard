@@ -1,0 +1,23 @@
+{% extends 'noticeboard/base.html' %}
+
+{% block title %}View Advert{% endblock %}
+
+{% block content %}
+    <h1>{{ advert.headline }}</h1>
+    <p>{{ advert.text }}</p>
+    <p><a href="{% url 'view_responses' advert.id %}">View responses and comments</a></p>
+
+    {% if user.is_authenticated %}
+        {% if user != advert.user %}
+            <p><a href="{% url 'leave_response' advert.id %}">Leave a response</a></p>
+        {% endif %}
+
+        <a href="{% url 'edit_advert' advert.id %}">Edit advertisement</a>
+        <p>Attention! This action is irreversible:</p>
+        <form method="post" action="{% url 'delete_advert' advert.id %}">
+            {% csrf_token %}
+            <button type="submit">Delete</button>
+        </form>
+    {% endif %}
+{% endblock %}
+

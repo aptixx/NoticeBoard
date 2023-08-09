@@ -1,0 +1,29 @@
+{% extends 'noticeboard/base.html' %}
+
+{% block title %}My Responses{% endblock %}
+
+{% block content %}
+    <h1>My Responses</h1>
+    <form method="get" action="">
+        <label for="advert_filter">Filter by Advert:</label>
+        <select name="advert_filter" id="advert_filter">
+            <option value="" selected>All Adverts</option>
+            {% for advert in user_adverts %}
+                <option value="{{ advert.id }}">{{ advert.headline }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Apply Filter</button>
+    </form>
+    <ul>
+        {% for response in my_responses %}
+            <li>
+            <p>{{ response.text|truncatechars:30 }} (for advert <b>{{ response.advert.headline }}</b>
+                of user <b>{{ response.advert.user }})</b></p>
+                    <form method="post" action="{% url 'delete_response' response.id %}">
+                        {% csrf_token %}
+                        <button type="submit">Delete</button>
+                    </form>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

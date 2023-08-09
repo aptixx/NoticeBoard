@@ -1,0 +1,23 @@
+{% extends 'noticeboard/base.html' %}
+
+{% block title %}Responses for Advert - {{ advert.headline }}{% endblock %}
+
+{% block content %}
+    <h1>Responses for Advert - {{ advert.headline }}</h1>
+
+    {% if error_message %}
+        <p class="error-message">{{ error_message }}</p>
+    {% endif %}
+
+    {% if responses %}
+        <ul>
+            {% for response in responses %}
+                <li>{{ response.text }} (from {{ response.user }})</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No responses yet.</p>
+    {% endif %}
+
+    <p><a href="{% url 'view_advert' advert.id %}">Back to {{ advert.headline }}</a></p>
+{% endblock %}

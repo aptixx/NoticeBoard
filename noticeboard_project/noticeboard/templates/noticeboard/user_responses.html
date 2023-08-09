@@ -1,0 +1,36 @@
+{% extends 'noticeboard/base.html' %}
+
+{% block title %}User Responses{% endblock %}
+
+{% block content %}
+    <h1>User Responses</h1>
+    <form method="get" action="">
+        <label for="advert_filter">Filter by Advert:</label>
+        <select name="advert_filter" id="advert_filter">
+            <option value="" selected>All Adverts</option>
+            {% for advert in user_adverts %}
+                <option value="{{ advert.id }}">{{ advert.headline }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Apply Filter</button>
+    </form>
+    <ul>
+        {% for response in responses %}
+            <li>
+                <p>{{ response.text }}</p>
+                <p>Response to: <b>{{ response.advert.headline }}</b> of user <b>{{ response.advert.user }}</b>
+                    written by <b>{{ response.user }}</b></p>
+                {% if not response.accepted and user == response.advert.user %}
+                    <form method="post" action="{% url 'accept_response' response.id %}">
+                        {% csrf_token %}
+                       <button type="submit">Accept Response</button>
+                    </form>
+                    <form method="post" action="{% url 'delete_response' response.id %}">
+                        {% csrf_token %}
+                        <p><button type="submit">Delete</button></p>
+                    </form>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

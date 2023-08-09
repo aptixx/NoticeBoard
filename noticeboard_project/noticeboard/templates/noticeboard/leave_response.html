@@ -1,0 +1,14 @@
+{% extends 'noticeboard/base.html' %}
+
+{% block title %}Leave Response{% endblock %}
+
+{% block content %}
+    <h1>Leave a Response</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="response_text">Response:</label><br>
+        <textarea id="response_text" name="response_text" rows="4" cols="50"></textarea><br>
+        <button type="submit">Submit</button>
+    </form>
+    <p><a href="{% url 'view_advert' advert.id %}">Back to Advert</a></p>
+{% endblock %}

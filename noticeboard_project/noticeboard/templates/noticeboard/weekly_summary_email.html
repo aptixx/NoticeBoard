@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Noticeboard</title>
+</head>
+<body>
+    <h1>Weekly Summary Email</h1>
+    <p>Hello {{ user.username }},</p>
+    <p>Here's your weekly summary:</p>
+
+    <ul>
+        <li>Total Adverts: {{ total_advert_count }}</li>
+        <li>Your Adverts: {{ user_advert_count }}</li>
+        <li>Responses to Your Adverts: {{ user_response_count }}</li>
+    </ul>
+
+    <p>Thank you for using our platform!</p>
+
+    <p>Best regards,</p>
+    <p>Your Project Team</p>
+</body>
+</html>

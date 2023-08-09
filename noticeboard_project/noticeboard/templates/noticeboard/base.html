@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'noticeboard/css/styles.css' %}">
+</head>
+<body>
+    <div>
+        <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'create_edit_advert' %}">Create Advert</a></li>
+            <li><a href="{% url 'user_profile' user.id %}">Profile</a></li>
+            <li><a href="{% url 'my_responses' %}">My Responses</a></li>
+            <li><a href="{% url 'user_responses' %}">User Responses</a></li>
+        </ul>
+    </div>
+    <div>
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

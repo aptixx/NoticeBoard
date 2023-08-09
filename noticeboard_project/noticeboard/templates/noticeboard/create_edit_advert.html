@@ -1,0 +1,17 @@
+{% extends 'noticeboard/base.html' %}
+
+{% block content %}
+    <html>
+    <head>
+        <title>{% if form.instance.pk %}Edit{% else %}Create{% endif %} Advert</title>
+    </head>
+    <body>
+        <h1>{% if form.instance.pk %}Edit{% else %}Create{% endif %} Advert</h1>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">{% if form.instance.pk %}Update{% else %}Create{% endif %}</button>
+        </form>
+    </body>
+    </html>
+{% endblock %}
