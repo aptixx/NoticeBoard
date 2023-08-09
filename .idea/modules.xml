@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/noticeboard.iml" filepath="$PROJECT_DIR$/.idea/noticeboard.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/NoticeBoard.iml" filepath="$PROJECT_DIR$/.idea/NoticeBoard.iml" />
     </modules>
   </component>
 </project>
